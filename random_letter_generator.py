@@ -1,9 +1,8 @@
 from string import ascii_letters, ascii_lowercase , digits
-#from random import shuffle 
 from collections import OrderedDict
 from tqdm import tqdm
 from time import time 
-from numpy import random, int64
+from numpy import random
 
 # Main fuction 
 def pw_gen(string: str,  length: int, n: int = 1): 
@@ -19,12 +18,9 @@ def pw_gen(string: str,  length: int, n: int = 1):
 	start = time ()
 	# Main loop 
 	for i in tqdm(range(n)):
-		r = random.shuffle(s) # random the letters 
+		random.shuffle(s) # random the letters 
 		re = "".join(s[0:length]) # all random letter as per given length 
-		pw = pw_raw.append(re) # save all at valve in 'pw' array 
-	
-	 
-	# pw_raw_ = [(pw_raw.append(("".join(s[0: length]))) , shuffle(s) )for i in tqdm( range(n) )]
+		pw = pw_raw.append(re) # save all at valve in 'pw' array 	
 	
 	end = time()
 	print("Time taken: ", (end - start))
@@ -34,13 +30,15 @@ def pw_gen(string: str,  length: int, n: int = 1):
 	# Print number of elements in all arrays 
 	print("re : " ,len(re),'\n',"pw_raw: ", len(pw_raw), '\n', "res : " ,len(res), '\n',"re_res : " ,len(re_res))
 	
-	with open("test\\password_1_2.lst", 'w') as pw:
+	filename = input("Enter File name: ")
+	
+	with open(f"{filename}", 'w') as pw:
 		pw.write(re_res)
 		pw.close()
-
+	
 	return re_res
 
 # Driver Code  
 if __name__ == "__main__":
-	apt = ascii_lowercase
-	a =  pw_gen(apt, 5, 15000000)
+	random_letter = ascii_lowercase
+	pw_gen(random_letter, 5, 150000)
