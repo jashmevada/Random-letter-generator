@@ -4,7 +4,7 @@ from tqdm import tqdm
 from time import time
 from numpy import random
 
-# Main fuction 
+
 def pw_gen(string: str,  length: int, n: int = 1):
 	# 're_res' re -> rearrange and res -> result
 	# 'pw_raw' -> password list as raw data
@@ -16,7 +16,7 @@ def pw_gen(string: str,  length: int, n: int = 1):
 	s.extend(list(string)) # convert string to list and store in 's'
 	
 	start = time ()
-	# Main loop
+	
 	for i in tqdm(range(n)):
 		random.shuffle(s) # random the letters
 		re = "".join(s[0:length]) # make random letter from list 's' of input length
